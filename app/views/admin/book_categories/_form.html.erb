@@ -1,0 +1,6 @@
+
+<%= form_with model: [:admin , @category] do |form| %>
+  <%= form.label :name, "Enter Book Category Name" %>
+  <%= form.text_field :name %>
+  <%= form.submit "Create" %>
+<% end %>

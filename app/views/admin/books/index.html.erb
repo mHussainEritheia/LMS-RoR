@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Publish Year</th>
+      <th scope="col">Book Category</th>
+      <th scope="col">Category ID</th>
+      <th scope="col">Availability</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @books.each do |item|%>
+    <tr>
+      <th scope="row"><%= item.id%></th>
+      <td><%= item.name%></td>
+      <td><%= item.author%></td>
+      <td><%= item.publication_year%></td>
+      <td><%= BookCategory.find(item.book_category_id).name%></td>
+      <td><%= item.book_category_id%></td>
+      <td><%= item.availble%></td>
+      <td><%= link_to "Edit", edit_admin_book_path(item), class: "btn btn-sm btn-info"  %></td>
+      <td><%= button_to "Delete", admin_book_path(item), method: :delete ,class: "btn btn-sm btn-danger" %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+<%= link_to "Add New Book", new_admin_book_path%>

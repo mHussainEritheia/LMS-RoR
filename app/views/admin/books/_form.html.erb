@@ -1,0 +1,19 @@
+
+<%= form_with model: [:admin, @book] do |form| %>
+  
+    
+      <%= form.label :name, "Enter Book Name" %>
+      <%= form.text_field :name %>
+ 
+      <%= form.label :author, "Enter Book Author Name" %>
+      <%= form.text_field :author %>
+
+      <%= form.label :name, "Select Book Publication Year" %>
+      <%= form.date_field :publication_year %>
+
+      <%= form.label :name, "Select Book Category" %>
+      <%= form.select :book_category_id, BookCategory.pluck(:name, :id)  %>
+     
+    <%= form.submit %>
+
+<% end %>

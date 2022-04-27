@@ -1,0 +1,3 @@
+<% @books.each do |item| %>
+  <%= link_to item.name, reader_book_category_book_path(item.book_category_id, item)%>
+<% end %>
