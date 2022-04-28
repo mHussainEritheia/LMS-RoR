@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Return Date</th>
+      <th scope="col">User Returned Date</th>
+      <th scope="col">Book Returned</th>
+      <th scope="col">Book Name</th>
+      <th scope="col">Student Name</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @issued_books.each do |item|%>
+    <tr>
+      <th scope="row"><%= item.id%></th>
+      <td><%= item.return_date.to_date%></td>
+      <td><%= item.actual_return_date%></td>
+      <td><%= item.returned%></td>
+      <td><%= Book.find(item.book_id).name%></td>
+      <td><%= User.find(item.user_id).name%></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

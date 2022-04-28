@@ -1,0 +1,6 @@
+<%= form_with model: [:admin, @reqBook] do |form| %>
+    <%= form.label :return_date, "Return Date" %>
+    <%= form.date_field :return_date %>
+    <%= form.select :status, [["approved", "approved"], ["rejected", "rejected"]] %>
+    <%= form.submit %>  
+<% end %>

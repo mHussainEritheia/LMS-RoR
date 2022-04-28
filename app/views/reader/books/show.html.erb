@@ -1,2 +1,23 @@
-<h2><%= @book.name%></h2>
-<em><%= link_to "Request Book", new_reader_book_category_book_requested_book_path(@book.book_category_id, @book.id)%></em>
+<table class="table">
+    <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">Author</th>
+    <th scope="col">Publication Year</th>
+    <th scope="col">Book Category</th>
+    <th scope="col">Availability</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row"><%= @book.id %></th>
+    <td><%= @book.name %></td>
+    <td><%= @book.author%></td>
+    <td><%= @book.publication_year %></td>
+    <td><%= BookCategory.find(@book.book_category_id).name %></td>
+    <td><%= @book.availble %></td>
+  </tr>
+  </tbody>
+</table>
+<em><%= link_to "Request Book", new_reader_requested_book_path(@book.id)%></em>

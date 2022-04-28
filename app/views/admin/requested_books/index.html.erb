@@ -1,0 +1,30 @@
+<table class="table">
+    <thead>
+  <tr>
+    <th scope="col">Username</th>
+    <th scope="col">Book</th>
+    <th scope="col">Request Date</th>
+    <th scope="col">Status</th>
+    <th scope="col">Approve</th>
+  </tr>
+  </thead>
+<% @req_all.each do |item|%>
+  <tbody>
+  <tr>
+    <td><%= User.find(item.user_id).name %></td>
+    <td><%= Book.find(item.book_id).name %></td>
+    <td><%= item.created_at %></td>
+    <td><%= item.status %></td>
+    <td>
+        <small>
+            <em>
+                <%= link_to "Approve", admin_requested_book_path(item.id, status: "approved", book_id: item.book_id), data:{turbo_method: :patch}%> |
+                <%= link_to "Reject", admin_requested_book_path(item.id, status: "rejected", book_id: item.book_id),data:{turbo_method: :patch}%>
+                <%#= link_to "Reject", admin_path(item.id, status: "rejected", book_id: item.book_id),data:{turbo_method: :patch}%>
+            </em>
+        </small>
+    </td>
+  </tr>
+  </tbody>
+<% end %> 
+</table>

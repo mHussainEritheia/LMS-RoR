@@ -13,20 +13,8 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-    <% if user_signed_in? %>
-      <li class="nav-item">
-        <%#= link_to "Log Out", destroy_user_session_path, class: "nav-link btn btn-sm btn-warning", data: { turbo_method: :delete}%>
-      </li>
-      <li class="nav-item">
-        <%#= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link btn btn-sm btn-primary" %>
-      </li>
-      <% else %>
-      <li class="nav-item">
-        <%#= link_to "Log In", new_user_session_path, class: "nav-link btn btn-sm btn-info font-weight-bold text-light float-right"%>
-      </li>
-      <% end %>
     </ul>
-        <div class="dropdown ms-auto"> <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <div class="dropdown ms-auto" style="padding-right: 25px;"> <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
          <strong style="color: black;">
           <% if user_signed_in? %>
           <%= current_user.name%>
@@ -34,15 +22,12 @@
           Login First
           <%end%>
          </strong> </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link btn btn-sm btn-light" %></li>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="padding: 2px 25px 2px 2px;" aria-labelledby="dropdownUser1">
+            <li><%= button_to 'Edit Profile', edit_user_registration_path, class: "nav-link btn btn-sm btn-light", method: :get %></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
             <li><%= button_to "Log Out", destroy_user_session_path, class: "nav-link btn btn-sm btn-warning", method: :delete %></li>
-            <%#= button_to "Log Out", { :action => "end_user_session", :controller => "books" }, class: "nav-link btn btn-sm btn-warning", method: :delete %>
         </ul>
     </div>
   </div>

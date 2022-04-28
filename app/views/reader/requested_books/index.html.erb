@@ -1,2 +1,28 @@
-<h1>RequestedBooks#index</h1>
-<p>Find me in app/views/requested_books/index.html.erb</p>
+<table class="table">
+    <thead>
+  <tr>
+    <th scope="col">Username</th>
+    <th scope="col">Book</th>
+    <th scope="col">Request Date</th>
+    <th scope="col">Status</th>
+    <th scope="col">Approved Date</th>
+    <th scope="col">Return Book</th>
+  </tr>
+  </thead>
+<% @requestedBooks.each do |item|%>
+  <tbody>
+  <tr>
+    <td><%= User.find(item.user_id).name %></td>
+    <td><%= Book.find(item.book_id).name %></td>
+    <td><%= item.created_at %></td>
+    <td><%= item.status %></td>
+    <% if item.approved_date.blank? %>
+    <td>Blank</td>
+    <% else %>
+    <td><%= item.approved_date%></td>
+    <% end %>
+    <td><%= link_to "Return", reader_path(item.id),data:{turbo_method: :patch}%></td>
+  </tr>
+  </tbody>
+<% end %> 
+</table>

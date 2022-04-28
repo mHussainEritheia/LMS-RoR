@@ -7,3 +7,4 @@ class Reader::BookCategoriesController < ApplicationController
         @category = BookCategory.find(params[:id])
     end
 end
+ 

@@ -8,6 +8,12 @@
   height: 200px;
 }
 
+table,
+th,
+td {
+  border: 1px solid;
+}
+
 li {
   margin-left: auto;
   /* margin-left: auto; */

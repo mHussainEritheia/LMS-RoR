@@ -1,3 +1,28 @@
-<% @books.each do |item| %>
-  <%= link_to item.name, reader_book_category_book_path(item.book_category_id, item)%>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Publish Year</th>
+      <th scope="col">Book Category</th>
+      <th scope="col">Category ID</th>
+      <th scope="col">Availability</th>
+      <th scope="col">Request</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @books.each do |item|%>
+    <tr>
+      <th scope="row"><%= item.id%></th>
+      <td><%= item.name%></td>
+      <td><%= item.author%></td>
+      <td><%= item.publication_year%></td>
+      <td><%= BookCategory.find(item.book_category_id).name%></td>
+      <td><%= item.book_category_id%></td>
+      <td><%= item.availble%></td>
+      <td><%= link_to "Request Book", new_reader_requested_book_path(item.id)%></td>
+    </tr>
 <% end %>
+  </tbody>
+</table>

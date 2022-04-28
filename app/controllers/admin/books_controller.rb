@@ -18,8 +18,7 @@ class Admin::BooksController < ApplicationController
     end
 
     def create
-        @book = Book.create(book_param)
-        if @book
+      if Book.create(book_param)
          redirect_to admin_books_path
         else
          render action: "new"
