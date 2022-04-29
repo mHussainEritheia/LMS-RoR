@@ -27,7 +27,6 @@
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
-  background-color: #262626;
   padding-left: 8px;
 }
 
@@ -49,20 +48,41 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li> <a href="/" class="nav-link text-white"> <i class="fa fa-dashboard"></i><span class="ms-2">Categories</span> </a> </li>
-            <li> <a href="/admin/books" class="nav-link text-white"> <i class="fa fa-dashboard"></i><span class="ms-2">All Books</span> </a> </li>
-            <li> <a href="/admin/requested_books" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">Requested Books</span> </a> </li>
-            <li> <a href="/admin/issuebooks" class="nav-link text-white"> <i class="fa fa-cog"></i><span class="ms-2">Issued Books</span> </a> </li>
-            <li> <a href="/admin/bookfines" class="nav-link text-white"> <i class="fa fa-cog"></i><span class="ms-2">Due Amounts</span> </a> </li>
-            <li>        
-                <button class="dropdown-btn">Dropdown 
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-container">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
+            <li>
+              <button class="dropdown-btn">
+              <i class="fa fa-dashboard"></i>
+              <span class="ms-2">Books</span>
+              </button>
+              <div class="dropdown-container">
+                <%= link_to "Books", admin_books_path%>
+                <%= link_to "Obtainable", admin_books_path(availble: true)%>
+                <%= link_to "Unobtainable", admin_books_path(availble: false)%>
+              </div>
             </li>
+            <li>
+              <button class="dropdown-btn">
+              <i class="fa fa-dashboard"></i>
+              <span class="ms-2">Requested Books</span>
+              </button>
+              <div class="dropdown-container">
+                <%= link_to "All", admin_requested_books_path %>
+                <%= link_to "Pending", admin_requested_books_path(status: "pending") %>
+                <%= link_to "Approved", admin_requested_books_path(status: "approved") %>
+                <%= link_to "Rejected", admin_requested_books_path(status: "rejected") %>
+              </div>
+            </li>
+            <li>
+              <button class="dropdown-btn">
+              <i class="fa fa-dashboard"></i>
+              <span class="ms-2">Issued Books</span>
+              </button>
+              <div class="dropdown-container">
+                <%= link_to "All", admin_issuebooks_path %>
+                <%= link_to "Returned Books", admin_issuebooks_path(returned: true) %>
+                <%= link_to "Not Returned Books", admin_issuebooks_path(returned: false) %>
+              </div>
+            </li>
+            <li> <a href="/admin/bookfines" class="nav-link text-white"> <i class="fa fa-cog"></i><span class="ms-2">Due Amounts</span> </a> </li>
         </ul>
                 
                 

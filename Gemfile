@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.0.0"
 
 gem "devise"
-
+gem 'kaminari'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 # gem "rails", "->7.1.1"
 gem "rails", github: "rails/rails", branch: "main"
@@ -73,3 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "pundit", "~> 2.2"
+
+gem "ransack", "~> 3.1"

@@ -1,13 +1,19 @@
 class Admin::BooksController < ApplicationController
-   #  before_action :set_category
     def index
-      # binding.pry
+      @q = Book.ransack(params[:q])
          if user_session.nil?
             redirect_to new_user_session_path
             else
-               @books = Book.all
+              if params[:availble] === "true"
+               @books = Book.where(availble: true).page params[:page]
+              elsif params[:availble] === "false"
+               @books = Book.where(availble: false).page params[:page]
+              else
+               @books = @q.result.page params[:page]
+              end
+               # authorize ([:admin, @books])
          end
-    end
+    end  
 
     def show
         @book = Book.find(params[:id])
@@ -20,13 +26,15 @@ class Admin::BooksController < ApplicationController
     def create
       if Book.create(book_param)
          redirect_to admin_books_path
-        else
+      else
          render action: "new"
-        end
+      end
     end
 
     def edit
         @book = Book.find(params[:id])
+      #   debugger
+        authorize @book
      end
 
      def update
@@ -40,16 +48,10 @@ class Admin::BooksController < ApplicationController
 
      def destroy
          if Book.find(params[:id]).destroy
-            # redirect_to :action => 'index'
             redirect_to admin_books_path, status: :see_other
          else
             render "index"
          end
-     end
-
-     private
-     def set_category
-        @category = BookCategory.find(params[:book_category_id])
      end
 
     def book_param

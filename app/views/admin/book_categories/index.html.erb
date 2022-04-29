@@ -1,3 +1,8 @@
+<%= search_form_for(@q, url:admin_book_categories_path) do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont %>
+  <%= f.submit %>
+<% end %>
 <table class="table">
   <thead>
     <tr>
@@ -18,5 +23,6 @@
 <% end %>
   </tbody>
 </table>
+<%= paginate @categories %>
     <%#= link_to "Show All Books", admin_books_path(@category)%>
 <%= link_to "Add Category", new_admin_book_category_path%>

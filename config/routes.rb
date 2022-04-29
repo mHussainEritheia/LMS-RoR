@@ -16,12 +16,11 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :book_categories 
     resources :books 
-    patch 'requested_books/rejected/:id', to: 'requested_books#admin_rejected_book'
     resources :requested_books
     resources :issuebooks
     resources :bookfines, except: [:create, :new, :edit, :show, :update, :destroy]
   end
-
+ 
   namespace :reader do
     resources :book_categories, only: [:show, :index] 
     resources :books, only: [:show, :index] 

@@ -1,6 +1,7 @@
 class Admin::BookCategoriesController < ApplicationController
     def index
-        @categories = BookCategory.all
+      @q = BookCategory.ransack(params[:q])
+      @categories = @q.result.page params[:page]
     end
 
     def show

@@ -1,6 +1,8 @@
 class Reader::BooksController < ApplicationController
     def index
         @books = Book.all
+        authorize [:reader, @books]
+        # debugger
     end
 
     def show

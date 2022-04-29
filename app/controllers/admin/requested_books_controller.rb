@@ -1,20 +1,15 @@
 class Admin::RequestedBooksController < ApplicationController
     def index
-        @req_all = RequestedBook.all
-    end
-
-    def edit
         # debugger
-        @reqBook = RequestedBook.find(params[:id])
-    end
-
-    def admin_rejected_book
-        # debugger
-        if RequestedBook.find(params[:id]).update(status: params[:status])       
-            redirect_to admin_requested_books_path
-        else
-            render :index
-        end
+       if params[:status] === "pending"
+        @req_all = RequestedBook.where(status: "pending").page params[:page]
+       elsif params[:status] === "approved"
+        @req_all = RequestedBook.where(status: "approved").page params[:page]
+        elsif params[:status] === "rejected"
+            @req_all = RequestedBook.where(status: "rejected").page params[:page]
+       else
+        @req_all = RequestedBook.page params[:page]
+       end
     end
 
     def update

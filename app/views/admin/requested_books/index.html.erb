@@ -11,6 +11,7 @@
 <% @req_all.each do |item|%>
   <tbody>
   <tr>
+  <%#debugger %>
     <td><%= User.find(item.user_id).name %></td>
     <td><%= Book.find(item.book_id).name %></td>
     <td><%= item.created_at %></td>
@@ -28,3 +29,4 @@
   </tbody>
 <% end %> 
 </table>
+<%= paginate @req_all %>
