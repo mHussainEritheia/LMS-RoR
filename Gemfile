@@ -77,3 +77,5 @@ end
 gem "pundit", "~> 2.2"
 
 gem "ransack", "~> 3.1"
+gem "pg"
+gem 'acts_as_paranoid'

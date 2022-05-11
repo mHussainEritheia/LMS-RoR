@@ -29,6 +29,15 @@
     </div>
     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
       <div class="container" style="margin-left: 10px;">
+          <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+          <% flash.each do |name, msg|%>
+            <%= msg %>
+          <% end %>
         <%= yield %>
       </div>
       </div>

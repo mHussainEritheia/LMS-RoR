@@ -3,6 +3,13 @@ class Reader::RequestedBooksController < ApplicationController
     @requestedBooks = RequestedBook.where(user_id: current_user.id)
   end
 
+  def book_rating
+    if Rating.create(user_id: current_user.id, book_id: session[:book_id], rating: params[:rating])
+    # debugger
+    redirect_to reader_books_path
+    end
+  end
+  
   def return_book
     penalty = 0
     days_def = 0
@@ -16,9 +23,10 @@ class Reader::RequestedBooksController < ApplicationController
       days_def = (@issueInstance.actual_return_date.to_date - @issueInstance.return_date.to_date).to_i
       penalty = days_def * 110
       BookFine.create(amount: penalty, user_id: @user_id, book_id: @book_id, issue_book_id: @issueInstance.id)
+      session[:book_id] = @book_id
     end
     # debugger
-    redirect_to reader_requested_books_path
+    # redirect_to reader_requested_books_path
   end
 
   def new
@@ -28,7 +36,7 @@ class Reader::RequestedBooksController < ApplicationController
     @user_id = current_user.id
     if @request = RequestedBook.new(user_id: @user_id, book_id: @book.id)
       @request.save
-      redirect_to reader_requested_books_path
+      redirect_to reader_books_path
     else
       redirect_to reader_book_path(@book.id)
     end

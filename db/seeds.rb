@@ -8,3 +8,6 @@
 Role.create(name: "Admin")
 Role.create(name: "Reader")
 BookCategory.create(name: "Climate")
+User.create(email: "admin1@gmail.com", name: "Minhas", gender: "Male", address: "South Asia",
+    mobile: "03070611116", role_id: 1, password: "123456", password_confirmation: "123456")
+    

@@ -2,10 +2,12 @@ class Admin::BookCategoriesController < ApplicationController
     def index
       @q = BookCategory.ransack(params[:q])
       @categories = @q.result.page params[:page]
+      authorize ([:admin, @categories])
     end
 
     def show
         @category = BookCategory.find(params[:id])
+        authorize ([:admin, @category])
     end
 
     def new
@@ -13,7 +15,9 @@ class Admin::BookCategoriesController < ApplicationController
     end
 
     def create
-        if @category = BookCategory.create(category_param)
+        @category = BookCategory.new(category_param)
+        if @category.save
+         authorize ([:admin, @category])
          redirect_to :action =>  'index'
         else
          render 'new'
@@ -22,11 +26,13 @@ class Admin::BookCategoriesController < ApplicationController
 
     def edit
         @category = BookCategory.find(params[:id])
+        authorize ([:admin, @category])
      end
 
      def update
         @category = BookCategory.find(params[:id])      
         if @category.update(category_param)
+         authorize ([:admin, @category])
            redirect_to :action => 'show'
         else
            render :action => 'edit'
@@ -34,9 +40,10 @@ class Admin::BookCategoriesController < ApplicationController
      end
 
      def destroy
-        @book = BookCategory.find(params[:id])
+        @category = BookCategory.find(params[:id])
         # debugger
-         if @book.destroy
+        authorize ([:admin, @category])
+         if @category.destroy
             redirect_to :action => 'index'
          else
             render :action => 'index'

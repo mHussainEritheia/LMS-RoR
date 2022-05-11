@@ -1,4 +1,5 @@
 class Admin::BooksController < ApplicationController
+   
     def index
       @q = Book.ransack(params[:q])
          if user_session.nil?
@@ -9,45 +10,50 @@ class Admin::BooksController < ApplicationController
               elsif params[:availble] === "false"
                @books = Book.where(availble: false).page params[:page]
               else
-               @books = @q.result.page params[:page]
+               @books = @q.result.includes(:book_category).page params[:page]
               end
-               # authorize ([:admin, @books])
+      authorize ([:admin, @books])
          end
     end  
 
     def show
         @book = Book.find(params[:id])
+        authorize ([:admin, @book])
     end
 
     def new
         @book = Book.new
+        authorize ([:admin, @book])
     end
 
     def create
-      if Book.create(book_param)
+      @book = Book.new(book_param)
+      # debugger
+      if @book.save
          redirect_to admin_books_path
       else
-         render action: "new"
+         render 'new'
       end
     end
 
     def edit
         @book = Book.find(params[:id])
-      #   debugger
-        authorize @book
+        authorize ([:admin, @book])
      end
 
      def update
         @book = Book.find(params[:id])      
         if @book.update(book_param)
-           redirect_to :action => 'show'
+         redirect_to admin_books_path
         else
            render :action => 'edit'
         end
+      authorize ([:admin, @book])
      end
 
      def destroy
-         if Book.find(params[:id]).destroy
+      # debugger
+         if Book.where(id: params[:id]).first.destroy
             redirect_to admin_books_path, status: :see_other
          else
             render "index"
@@ -55,6 +61,6 @@ class Admin::BooksController < ApplicationController
      end
 
     def book_param
-        params.require(:book).permit(:name, :author, :publication_year, :book_category_id)
+        params.require(:book).permit(:name, :author, :publication_year, :book_category_id, :image)
      end
 end

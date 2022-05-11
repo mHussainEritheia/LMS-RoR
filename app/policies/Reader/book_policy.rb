@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Reader::BookPolicy
+class Reader::BookPolicy < ApplicationPolicy
     attr_reader :user, :record
   
     def initialize(user, record)
@@ -9,8 +9,8 @@ class Reader::BookPolicy
     end
   
     def index?
-        @user.role_id === 2
-        debugger
+        user.role_id === 2
+        # debugger
     end
   
     def show?
@@ -18,23 +18,23 @@ class Reader::BookPolicy
     end
   
     def create?
-      false
+      user.role_id === 2
     end
   
     def new?
-      false
+      user.role_id === 2
     end
   
     def update?
-      false
+      user.role_id === 2
     end
   
     def edit?
-      false
+      user.role_id === 2
     end
   
     def destroy?
-      false
+      user.role_id === 2
     end
   
     class Scope

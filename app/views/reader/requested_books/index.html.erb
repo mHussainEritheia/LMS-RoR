@@ -21,7 +21,14 @@
     <% else %>
     <td><%= item.approved_date%></td>
     <% end %>
-    <td><%= link_to "Return", reader_path(item.id),data:{turbo_method: :patch}%></td>
+    <% issbook = IssueBook.where(book_id: item.book_id) %>
+    <% book = Book.find(item.book_id) %>
+    <%# debugger %>
+    <% if book.availble === false %>
+      <td><%= link_to "Return", reader_path(item.id),data:{turbo_method: :get}%></td>
+    <% else %>
+      <td><a>Return</a></td>
+    <% end %>
   </tr>
   </tbody>
 <% end %> 

@@ -1,0 +1,8 @@
+<h1> Give User Rating </h1>
+<%= form_with url: "/reader/requested_books/book-rating"  do |form|%>
+<div>
+<%= form.label :"Rating"%>
+<%= form.range_field :rating, min: '0', max: '5' %>
+</div>
+<%= form.submit "Give Rating"%>
+<%end%>

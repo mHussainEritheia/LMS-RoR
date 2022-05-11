@@ -1,7 +1,11 @@
-# frozen_string_literal: true
-
-class Admin::BookPolicy
-    attr_reader :user, :record
+class Admin::BookCategoryPolicy < ApplicationPolicy
+  class Scope < Scope
+    # NOTE: Be explicit about which records you allow access to!
+    # def resolve
+    #   scope.all
+    # end
+  end
+  attr_reader :user, :record
   
     def initialize(user, record)
       @user = user
@@ -9,33 +13,38 @@ class Admin::BookPolicy
     end
   
     def index?
-        @user.role_id === 5
+        user.role_id === 1
         # debugger
     end
   
     def show?
-      @user.role_id === 1
+      user.role_id === 1
+      # debugger
     end
   
     def create?
-      false
+      user.role_id === 1
+      # debugger
     end
   
     def new?
-      false
+      user.role_id === 1
+      # debugger
     end
   
     def update?
-      false
+      user.role_id === 1
+      # debugger
     end
   
     def edit?
       @user.role_id === 1
-      debugger
+      # debugger
     end
   
     def destroy?
-      false
+      user.role_id === 1
+      # debugger
     end
   
     class Scope
@@ -52,5 +61,4 @@ class Admin::BookPolicy
   
       attr_reader :user, :scope
     end
-  end
-  
+end

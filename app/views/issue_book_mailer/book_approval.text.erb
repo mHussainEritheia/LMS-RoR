@@ -1,0 +1,19 @@
+Hi Dear..! Your Requested Book has been <%= @book.status %>
+===============================================
+Book Details
+Book ID : <%= @book.book_id %>
+User ID : <%= @book.user_id %>
+<% if @book.approved_date.nil?%>
+Book Has been rejected
+<% else %>
+Approved/Rejected At : <%= @book.approved_date.localtime %>
+<% end %>
+===============================================
+Book Return Date
+<% if @book.approved_date.nil?%>
+Book Has been rejected thus no return appointed to you
+<% else %>
+Book must be returned at <%= @book.approved_date.localtime + 50.days %>
+<% end %>
+===============================================
+Thanks for lending book from LMS and have a great day!

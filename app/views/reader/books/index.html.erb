@@ -21,7 +21,12 @@
       <td><%= BookCategory.find(item.book_category_id).name%></td>
       <td><%= item.book_category_id%></td>
       <td><%= item.availble%></td>
+      <%# debugger %>
+      <% if item.availble === true %>
       <td><%= link_to "Request Book", new_reader_requested_book_path(item.id)%></td>
+      <% else %>
+      <td><a>Request Book</a></td>
+      <% end %>
     </tr>
 <% end %>
   </tbody>

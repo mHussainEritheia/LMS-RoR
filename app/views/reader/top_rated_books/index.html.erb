@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Book ID</th>
+      <th scope="col">Book Name</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @decBooks.each do |item|%>
+    <tr>
+      <th scope="row"><%= item.id%></th>
+      <td><%= Book.find(item.id).name%></td>
+      <td><%= item.ratings.group("book_id").sum("rating")[item.id] %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

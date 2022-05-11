@@ -21,6 +21,7 @@ li {
 body {
   background-color: #eee;
   overflow-x: hidden;
+  height: auto;
 }
 
 .nav-link:hover {

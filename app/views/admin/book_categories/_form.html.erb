@@ -1,6 +1,9 @@
 
-<%= form_with model: [:admin , @category] do |form| %>
+<%= form_with model: [:admin , @category], data: {turbo: false} do |form| %>
   <%= form.label :name, "Enter Book Category Name" %>
   <%= form.text_field :name %>
+  <% @category.errors.full_messages_for(:name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   <%= form.submit "Create" %>
 <% end %>

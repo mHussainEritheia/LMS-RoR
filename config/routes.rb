@@ -20,11 +20,13 @@ Rails.application.routes.draw do
     resources :issuebooks
     resources :bookfines, except: [:create, :new, :edit, :show, :update, :destroy]
   end
- 
+  
   namespace :reader do
+    get 'top_rated_books/index'
     resources :book_categories, only: [:show, :index] 
     resources :books, only: [:show, :index] 
     resources :requested_books
-    patch 'requested_books/return/:id', to: 'requested_books#return_book'
+    post 'requested_books/book-rating', to: 'requested_books#book_rating'
+    get 'requested_books/return/:id', to: 'requested_books#return_book'
   end
 end
