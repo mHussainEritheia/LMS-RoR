@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :bookfines, except: [:create, :new, :edit, :show, :update, :destroy]
   end
   
+  post "checkout/create", to: "checkout#create"
+
   namespace :reader do
     get 'top_rated_books/index'
     # resources :book_categories, only: [:show, :index] 
