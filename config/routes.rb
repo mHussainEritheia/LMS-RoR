@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     # resources :book_categories, only: [:show, :index] 
     # get 'book_categories', to: '/books'
     resources :books, only: [:show, :index] 
+    resources :bookfines, except: [:create, :new, :edit, :show, :update, :destroy]
+    get 'bookfines/pay-dues', to: 'bookfines#pay_dues'
     resources :requested_books
     post 'requested_books/book-rating', to: 'requested_books#book_rating'
     get 'requested_books/return/:id', to: 'requested_books#return_book'

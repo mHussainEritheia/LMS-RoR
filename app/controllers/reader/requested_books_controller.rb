@@ -22,9 +22,9 @@ class Reader::RequestedBooksController < ApplicationController
     if @issueInstance.actual_return_date.to_date > @issueInstance.return_date.to_date
       days_def = (@issueInstance.actual_return_date.to_date - @issueInstance.return_date.to_date).to_i
       penalty = days_def * 110
-      BookFine.create(amount: penalty, user_id: @user_id, book_id: @book_id, issue_book_id: @issueInstance.id)
+      BookFine.create(paid: false,amount: penalty, user_id: @user_id, book_id: @book_id, issue_book_id: @issueInstance.id)
       session[:book_id] = @book_id
-    end
+    end 
     # debugger
     # redirect_to reader_requested_books_path
   end
