@@ -1,6 +1,6 @@
 class Reader::BooksController < ApplicationController
     def index
-        @books = Book.all
+        @books = Book.all.page params[:page]
         authorize [:reader, @books]
         # debugger
     end

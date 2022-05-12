@@ -29,15 +29,17 @@
     </div>
     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
       <div class="container" style="margin-left: 10px;">
+        <div id="box">
           <% if notice %>
           <p class="alert alert-success"><%= notice %></p>
           <% end %>
           <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
+          <p class="alert alert-danger"><%= alert %></p> 
           <% end %>
-          <% flash.each do |name, msg|%>
-            <%= msg %>
-          <% end %>
+          <%# flash.each do |name, msg|%>
+            <%#= msg %>
+          <%# end %>
+        </div>
         <%= yield %>
       </div>
       </div>
@@ -45,3 +47,14 @@
     </div>
   </body>
 </html>
+<script>
+setTimeout(() => {
+  const box = document.getElementById('box');
+
+  // 👇️ removes element from DOM
+  box.style.display = 'none';
+
+  // 👇️ hides element (still takes up space on page)
+  // box.style.visibility = 'hidden';
+}, 3000); // 👈️ time in milliseconds
+</script>

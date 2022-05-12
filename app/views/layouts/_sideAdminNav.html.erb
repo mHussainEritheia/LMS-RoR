@@ -2,7 +2,15 @@
 <style>
 /* Fixed sidenav, full height */
 .sidenav {
-  width: 200px;
+  /* width: 200px; */
+  /* float: left; */
+   height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
 /* Style the sidenav links and the dropdown button */
@@ -15,7 +23,7 @@
   background: none;
   text-align: left;
   cursor: pointer;
-}
+} 
 
 /* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
@@ -44,14 +52,14 @@
 </style>
 <div class="sidenav">
     <div class="col-md-3 col-3 col-sm-3 col-lg-3 " style="padding-left: 1px;">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 250px;height:645px;"> <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">LMS</span> </a>
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 250px;height:645px;"> <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Library</span> </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li> <a href="/" class="nav-link text-white"> <i class="fa fa-dashboard"></i><span class="ms-2">Categories</span> </a> </li>
+            <li> <a href="/" class="nav-link text-white"><span class="ms-2">Categories</span> <i class="fa fa-dashboard"></i></a> </li>
             <li>
               <button class="dropdown-btn">
-              <i class="fa fa-dashboard"></i>
               <span class="ms-2">Books</span>
+              <i class="fa fa-dashboard"></i>
               </button>
               <div class="dropdown-container">
                 <%= link_to "Books", admin_books_path%>
@@ -61,8 +69,8 @@
             </li>
             <li>
               <button class="dropdown-btn">
-              <i class="fa fa-dashboard"></i>
               <span class="ms-2">Requested Books</span>
+              <i class="fa fa-dashboard"></i>
               </button>
               <div class="dropdown-container">
                 <%= link_to "All", admin_requested_books_path %>
@@ -73,8 +81,8 @@
             </li>
             <li>
               <button class="dropdown-btn">
-              <i class="fa fa-dashboard"></i>
               <span class="ms-2">Issued Books</span>
+              <i class="fa fa-dashboard"></i>
               </button>
               <div class="dropdown-container">
                 <%= link_to "All", admin_issuebooks_path %>
@@ -82,8 +90,8 @@
                 <%= link_to "Not Returned Books", admin_issuebooks_path(returned: false) %>
               </div>
             </li>
-            <li> <a href="/admin/bookfines" class="nav-link text-white"> <i class="fa fa-cog"></i><span class="ms-2">Due Amounts</span> </a> </li>
-            <li> <a href="/reader/top_rated_books/index" class="nav-link text-white"> <i class="fa fa-cog"></i><span class="ms-2">Top Rated Books</span> </a> </li>
+            <li> <a href="/admin/bookfines" class="nav-link text-white"><span class="ms-2">Due Amounts</span> <i class="fa fa-cog"></i></a> </li>
+            <li> <a href="/reader/top_rated_books/index" class="nav-link text-white"><span class="ms-2">Top Rated Books</span> <i class="fa fa-cog"></i></a></li>
         </ul>
                 
                 
@@ -107,3 +115,4 @@ for (i = 0; i < dropdown.length; i++) {
   });
 }
 </script>
+ 

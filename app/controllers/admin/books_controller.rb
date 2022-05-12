@@ -12,7 +12,7 @@ class Admin::BooksController < ApplicationController
               else
                @books = @q.result.includes(:book_category).page params[:page]
               end
-      authorize ([:admin, @books])
+      authorize ([:admin, @books]) 
          end
     end  
 

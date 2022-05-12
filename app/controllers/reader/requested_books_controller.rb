@@ -1,6 +1,6 @@
 class Reader::RequestedBooksController < ApplicationController
   def index
-    @requestedBooks = RequestedBook.where(user_id: current_user.id)
+    @requestedBooks = RequestedBook.where(user_id: current_user.id).page params[:page]
   end
 
   def book_rating

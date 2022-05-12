@@ -14,10 +14,11 @@ td {
   border: 1px solid;
 }
 
-li {
+/* li {
   margin-left: auto;
-  /* margin-left: auto; */
-}
+  /* margin-left: auto;
+} */
+
 body {
   background-color: #eee;
   overflow-x: hidden;

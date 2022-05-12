@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
           if current_user.role_id === 1
                admin_book_categories_path
           else
-               reader_book_categories_path
+               reader_books_path
           end
      end
      

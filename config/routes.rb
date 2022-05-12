@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   
   namespace :reader do
     get 'top_rated_books/index'
-    resources :book_categories, only: [:show, :index] 
+    # resources :book_categories, only: [:show, :index] 
+    # get 'book_categories', to: '/books'
     resources :books, only: [:show, :index] 
     resources :requested_books
     post 'requested_books/book-rating', to: 'requested_books#book_rating'

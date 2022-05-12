@@ -1,18 +1,20 @@
-<table>
+<table class="table">
         <%= form_with model: [:admin, @book],data:{turbo: false} do |form| %>
             <tr>
                 <td>
-                  <%= form.label :name, "Enter Book Name" %>
-                  <%= form.text_field :name %>
+                <div class="mb-3">
+                  <%= form.label :name, "Enter Book Name", class: "form-label" %>
+                  <%= form.text_field :name, class: "form-control", placeholder: "xyz@xyz.com" %>
                   <% @book.errors.full_messages_for(:name).each do |message| %>
                   <div><%= message %></div>
-                  <% end %>  
+                  <% end %>
+                </div>
                 </td>
-            </tr>
+            </tr> 
             <tr>
                 <td>
-                  <%= form.label :author, "Enter Book Author Name" %>
-                  <%= form.text_field :author %>
+                  <%= form.label :author, "Enter Book Author Name", class: "form-label" %>
+                  <%= form.text_field :author, class: "form-control", placeholder: "John Jeffens" %>
                   <% @book.errors.full_messages_for(:author).each do |message| %>
                   <div><%= message %></div>
                   <% end %>
@@ -20,8 +22,8 @@
             </tr>
             <tr>
                 <td>
-                  <%= form.label :publication_year, "Select Book Publication Year" %>
-                  <%= form.date_field :publication_year %>
+                  <%= form.label :publication_year, "Select Book Publication Year", class: "form-label" %>
+                  <%= form.date_field :publication_year, class: "form-control" %>
                   <% @book.errors.full_messages_for(:publication_year).each do |message| %>
                   <div><%= message %></div>
                   <% end %>
@@ -29,8 +31,8 @@
             </tr>
             <tr>
                 <td>
-                  <%= form.label :book_category_id, "Select Book Category" %>
-                  <%= form.select :book_category_id, BookCategory.pluck(:name, :id)  %>
+                  <%= form.label :book_category_id, "Select Book Category", class: "form-label" %>
+                  <%= form.select :book_category_id, BookCategory.pluck(:name, :id), class: "form-control"  %>
                   <% @book.errors.full_messages_for(:book_category_id).each do |message| %>
                   <div><%= message %></div>
                   <% end %>
@@ -38,7 +40,7 @@
             </tr>
             <tr>
                 <td>
-                  <%= form.label :image%>
+                  <%= form.label :image, class: "form-label"%>
                   <%= form.file_field :image, class: "form-control"%>
                   <% @book.errors.full_messages_for(:image).each do |message| %>
                   <div><%= message %></div>
@@ -50,3 +52,4 @@
             </tr>
         <% end %>
     </table>
+ 
