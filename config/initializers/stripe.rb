@@ -1,1 +1,1 @@
-Stripe.api_key = Rails.application.credentials[:secret] || Rails.application.credentials[:stripe][:secret] || ENV["secret"]
+Stripe.api_key = Rails.application.credentials[:stripe_secret] 
