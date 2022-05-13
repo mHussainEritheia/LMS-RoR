@@ -1,8 +1,10 @@
 {
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1"
+    "@hotwired/stimulus": "^3.0.1",
+    "esbuild": "^0.14.39"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
-  }
+  },
+  "license": "ISC"
 }
