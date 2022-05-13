@@ -6,7 +6,7 @@
   <a style="padding-left: 2%;" class="navbar-brand" href="/users/sign_in">Welcome Reader</a>
 <% end %>
 <% else %>
-<a class="navbar-brand" href="/users/sign_in">Library Management System</a>
+<a class="navbar-brand" style="padding-left: 2%;" href="/users/sign_in">Library Management System</a>
 <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
     </ul>
-        <div class="dropdown ms-auto" style="padding-right: 25px;"> <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <div class="dropdown ms-auto"> <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
          <strong style="color: black;">
           <% if user_signed_in? %>
           <%= current_user.name%>
@@ -22,14 +22,26 @@
           Login First
           <%end%>
          </strong> </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="padding: 2px 25px 2px 2px;" aria-labelledby="dropdownUser1">
-            <li><%= button_to 'Edit Profile', edit_user_registration_path, class: "nav-link btn btn-sm btn-light", method: :get %></li>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li class="dropli"><%= button_to 'Edit Profile', edit_user_registration_path, class: "nav-link btn btn-sm btn-light", method: :get %></li>
                 <hr class="dropdown-divider">
-            <li><%= button_to "Log Out", destroy_user_session_path, class: "nav-link btn btn-sm btn-warning", method: :delete %></li>
+            <li class="dropli"><%= button_to "Sign Out", destroy_user_session_path, class: "nav-link btn btn-sm btn-warning", method: :delete %></li>
         </ul>
     </div>
   </div>
 </nav>
-<%# <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script> %>
+<style>
+.dropdown-menu {
+  /* padding-right: 56px; */
+  padding: 0;
+  text-align: center;
+  /* display: block; */
+  justify-content: center;
+  transform: translateX(-35px)
+}
+.dropli{
+  text-align: -webkit-center;
+}
+</style>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>

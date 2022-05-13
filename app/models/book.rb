@@ -8,4 +8,5 @@ class Book < ApplicationRecord
     has_many :users, through: :issue_books
     has_one_attached :image, :dependent => :destroy
     validates :name, :author, :publication_year, :book_category_id, :image, presence: true
+    has_many :book_fines, :dependent => :destroy
 end

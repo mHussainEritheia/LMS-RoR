@@ -1,5 +1,5 @@
 <%= search_form_for(@q, url:admin_books_path) do |f| %>
-  <table class="table">
+  <table class="table table-striped">
   <tbody>
   <tr>
   <td>
@@ -22,8 +22,8 @@
   </tbody>
   </table>
   <% end %>
-<table class="table">
-  <thead>
+<table class="table table-striped">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
@@ -56,5 +56,10 @@
 <% end %>
   </tbody>
 </table>
-<%= link_to "Add New Book", new_admin_book_path%>
+<%= link_to "Add New Book", new_admin_book_path, class: "add_new_book"%>
+<style>
+.add_new_book{
+  padding-left: 45%;
+}
+</style>
 <%= paginate @books %>

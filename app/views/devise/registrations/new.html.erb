@@ -1,8 +1,11 @@
+<div style="padding-right: 25%;">
 <h2 class="text-center text-primary font-weight-bold">Sign up</h2>
-<%= render "devise/shared/error_messages", resource: resource %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false})  do |f| %>
 <table class="table">
   <tbody>
+    <div class="actions text-center">
+      <%= f.submit "Sign up",class: 'btn btn-success mt-2 form-control' %>
+    </div>
     <tr>
       <td>
           <%= f.label :name, class: "form-label" %><br />
@@ -57,14 +60,9 @@
         </div>
       </td>
     </tr>
-    <tr>
-      <td>
-        <div class="actions text-center">
-          <%= f.submit "Sign up",class: 'btn btn-success mt-2 form-control' %>
-        </div>
-      </td>
-    </tr>
   </tbody>
 </table>
 <% end %>
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<%# <%= render "devise/shared/links" %>
+</div>

@@ -1,5 +1,5 @@
-<table class="table">
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-dark">
   <tr>
     <th scope="col">Username</th>
     <th scope="col">Book</th>
@@ -21,7 +21,6 @@
             <em>
                 <%= link_to "Approve", admin_requested_book_path(item.id, status: "approved", book_id: item.book_id), data:{turbo_method: :patch}%> |
                 <%= link_to "Reject", admin_requested_book_path(item.id, status: "rejected", book_id: item.book_id),data:{turbo_method: :patch}%>
-                <%#= link_to "Reject", admin_path(item.id, status: "rejected", book_id: item.book_id),data:{turbo_method: :patch}%>
             </em>
         </small>
     </td>

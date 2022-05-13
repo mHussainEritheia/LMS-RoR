@@ -3,8 +3,8 @@
   <%= f.search_field :name_cont %>
   <%= f.submit %>
 <% end %>
-<table class="table">
-  <thead>
+<table class="table table-striped">
+  <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
@@ -25,4 +25,9 @@
 </table>
 <%= paginate @categories %>
     <%#= link_to "Show All Books", admin_books_path(@category)%>
-<%= link_to "Add Category", new_admin_book_category_path%>
+<%= link_to "Add Category", new_admin_book_category_path, class: "add_category"%>
+<style>
+.add_category{
+  padding-left: 45%;
+}
+</style>
