@@ -3,36 +3,25 @@
   place-items: center;
   font-family: arial;
   font-size: 18px;
-  /* margin: 15px; */
   width: 350px;
   height: 200px;
 }
-
 table,
 th,
 td {
   border: 1px solid;
 }
-
-/* li {
-  margin-left: auto;
-  /* margin-left: auto;
-} */
-
 body {
   background-color: #eee;
   overflow-x: hidden;
   height: auto;
 }
-
 .nav-link:hover {
   background-color: #525252 !important;
 }
-
 .nav-link .fa {
   transition: all 1s;
 }
-
 .nav-link:hover .fa {
   transform: rotate(360deg);
 }

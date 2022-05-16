@@ -27,33 +27,33 @@
     <%= javascript_include_tag %>
   </head>
   <body>
-<div class="row">
-    <div class=" col-md-12 col-xs-12 col-sm-12 col-lg-12">
-      <%= render :partial => 'layouts/navbar' %>
+    <div class="row">
+      <div class=" col-md-12 col-xs-12 col-sm-12 col-lg-12">
+        <%= render :partial => 'layouts/navbar' %>
+      </div>
+      <div class="row">
+      <div class=" col-md-3 col-xs-3 col-sm-3 col-lg-3">
+        <% if user_signed_in? %>
+        <% if current_user.role_id === 1%>
+        <%= render :partial => 'layouts/sideAdminNav' %>
+        <% else %>
+        <%= render :partial => 'layouts/sideReaderNav' %>
+        <% end %>
+        <% end %>
+      </div>
+      <div class=" col-md-9 col-xs-9 col-sm-9 col-lg-9" style="margin-top: 1%;">
+        <div id="box">
+          <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p> 
+          <% end %>
+        </div>
+          <%= yield %>
+        </div>
+      </div>
     </div>
-<div class="row">
-  <div class=" col-md-3 col-xs-3 col-sm-3 col-lg-3">
-    <% if user_signed_in? %>
-    <% if current_user.role_id === 1%>
-    <%= render :partial => 'layouts/sideAdminNav' %>
-    <% else %>
-    <%= render :partial => 'layouts/sideReaderNav' %>
-    <% end %>
-    <% end %>
-  </div>
-<div class=" col-md-9 col-xs-9 col-sm-9 col-lg-9" style="margin-top: 1%;">
-    <div id="box">
-    <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p> 
-    <% end %>
-  </div>
-  <%= yield %>
-</div>
-</div>
-</div>
   </body>
 </html>
 <script>

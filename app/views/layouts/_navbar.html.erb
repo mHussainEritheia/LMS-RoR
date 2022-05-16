@@ -1,41 +1,39 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-<% if user_signed_in? %>
-<% if current_user.role_id === 1%>
-  <a style="padding-left: 2%;" class="navbar-brand" href="/users/sign_in">Welcome Admin</a>
+  <% if user_signed_in? %>
+    <% if current_user.role_id === 1%>
+    <a style="padding-left: 2%;" class="navbar-brand" href="/users/sign_in">Welcome Admin</a>
+    <% else %>
+    <a style="padding-left: 2%;" class="navbar-brand" href="/users/sign_in">Welcome Reader</a>
+    <% end %>
   <% else %>
-  <a style="padding-left: 2%;" class="navbar-brand" href="/users/sign_in">Welcome Reader</a>
-<% end %>
-<% else %>
-<a class="navbar-brand" style="padding-left: 2%;" href="/users/sign_in">Library Management System</a>
-<% end %>
+    <a class="navbar-brand" style="padding-left: 2%;" href="/users/sign_in">Library Management System</a>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
     </ul>
-        <div class="dropdown ms-auto"> <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-         <strong style="color: black;">
+      <div class="dropdown ms-auto"> <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <strong style="color: black;">
           <% if user_signed_in? %>
           <%= current_user.name%>
           <%else%>
           Login First
           <%end%>
-         </strong> </a>
+        </strong></a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li class="dropli"><%= button_to 'Edit Profile', edit_user_registration_path, class: "nav-link btn btn-sm btn-light", method: :get %></li>
-                <hr class="dropdown-divider">
-            <li class="dropli"><%= link_to "Sign Out", destroy_user_session_path, class: "nav-link btn btn-sm btn-warning", data: { turbo_method: :delete } %></li>
+          <li class="dropli"><%= button_to 'Edit Profile', edit_user_registration_path, class: "nav-link btn btn-sm btn-light", method: :get %></li>
+            <hr class="dropdown-divider">
+          <li class="dropli"><%= link_to "Sign Out", destroy_user_session_path, class: "nav-link btn btn-sm btn-warning", data: { turbo_method: :delete } %></li>
         </ul>
     </div>
   </div>
 </nav>
 <style>
 .dropdown-menu {
-  /* padding-right: 56px; */
   padding: 0;
   text-align: center;
-  /* display: block; */
   justify-content: center;
   transform: translateX(-35px)
 }

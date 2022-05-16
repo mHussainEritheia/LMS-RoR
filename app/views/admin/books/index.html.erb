@@ -1,66 +1,64 @@
 <%= search_form_for(@q, url:admin_books_path) do |f| %>
   <table class="table table-striped">
-  <tbody>
-  <tr>
-  <td>
-    <%= f.label "Book Name" %>
-    <%= f.search_field :name_cont %>
-  </td>
-  <td>
-    <%= f.label "Category Name" %>
-    <%= f.search_field :book_category_name_cont %>
-  </td>
-  <td>
-    <%= f.label "Auther Name" %>
-    <%= f.search_field :author_cont %>
-  </td>
-  <td>
-  <%= f.label "Search" %>
-  <%= f.submit "Submit" %>
-  </td>
-  </tr>  
-  </tbody>
+    <tbody>
+      <tr>
+        <td>
+          <%= f.label "Book Name" %>
+          <%= f.search_field :name_cont %>
+        </td>
+        <td>
+          <%= f.label "Category Name" %>
+          <%= f.search_field :book_category_name_cont %>
+        </td>
+        <td>
+          <%= f.label "Auther Name" %>
+          <%= f.search_field :author_cont %>
+        </td>
+        <td>
+          <%= f.label "Search" %>
+          <%= f.submit "Submit" %>
+        </td>
+      </tr>  
+    </tbody>
   </table>
   <% end %>
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Author</th>
-      <th scope="col">Publish Year</th>
-      <th scope="col">Book Category</th>
-      <th scope="col">Category ID</th>
-      <th scope="col">Availability</th>
-      <th scope="col">Image</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @books.each do |item|%>
-    <tr>
-      <th scope="row"><%= item.id%></th>
-      <td><%= item.name%></td>
-      <td><%= item.author%></td>
-      <%# debugger %>
-      <%# <td><%= (Time.now - item.publication_year.beginning_of_day).seconds.in_days.to_i</td>%>
-      <td><%= item.publication_year.localtime %></td>
-      <td><%= BookCategory.find(item.book_category_id).name%></td>
-      <td><%= item.book_category_id%></td>
-      <% if item.availble === true%>
-      <td>Yes</td>
-      <% else %>
-      <td>No</td>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Author</th>
+        <th scope="col">Publish Year</th>
+        <th scope="col">Book Category</th>
+        <th scope="col">Category ID</th>
+        <th scope="col">Availability</th>
+        <th scope="col">Image</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |item|%>
+        <tr>
+          <th scope="row"><%= item.id%></th>
+          <td><%= item.name%></td>
+          <td><%= item.author%></td>
+          <td><%= item.publication_year.localtime %></td>
+          <td><%= BookCategory.find(item.book_category_id).name%></td>
+          <td><%= item.book_category_id%></td>
+          <% if item.availble === true%>
+          <td>Yes</td>
+          <% else %>
+          <td>No</td>
+          <% end %>
+          <td><%= image_tag item.image, style: "height: 50px; width: 50px;" %></td>
+          <td><%= link_to "Edit", edit_admin_book_path(item), class: "btn btn-sm btn-info"  %></td>
+          <td><%= button_to "Delete", admin_book_path(item), method: :delete ,class: "btn btn-sm btn-danger" %></td>
+        </tr>
       <% end %>
-      <td><%= image_tag item.image, style: "height: 50px; width: 50px;" %></td>
-      <td><%= link_to "Edit", edit_admin_book_path(item), class: "btn btn-sm btn-info"  %></td>
-      <td><%= button_to "Delete", admin_book_path(item), method: :delete ,class: "btn btn-sm btn-danger" %></td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-<%= link_to "Add New Book", new_admin_book_path, class: "add_new_book"%>
+    </tbody>
+  </table>
+  <%= link_to "Add New Book", new_admin_book_path, class: "add_new_book"%>
 <style>
 .add_new_book{
   padding-left: 45%;

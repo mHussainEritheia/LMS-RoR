@@ -1,36 +1,35 @@
 <table class="table table-striped">
   <thead class="thead-dark">
-  <tr>
-    <th scope="col">Username</th>
-    <th scope="col">Book</th>
-    <th scope="col">Request Date</th>
-    <th scope="col">Status</th>
-    <th scope="col">Approved Date</th>
-    <th scope="col">Return Book</th>
-  </tr>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Book</th>
+      <th scope="col">Request Date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Approved Date</th>
+      <th scope="col">Return Book</th>
+    </tr>
   </thead>
-<% @requestedBooks.each do |item|%>
+  <% @requestedBooks.each do |item|%>
   <tbody>
-  <tr>
-    <td><%= User.find(item.user_id).name %></td>
-    <td><%= Book.find(item.book_id).name %></td>
-    <td><%= item.created_at.localtime %></td>
-    <td><%= item.status %></td>
-    <% if item.approved_date.blank? %>
-    <td>Blank</td>
-    <% else %>
-    <td><%= item.approved_date.localtime%></td>
-    <% end %>
-    <% issbook = IssueBook.where(book_id: item.book_id) %>
-    <% book = Book.find(item.book_id) %>
-    <%# debugger %>
-    <% if book.availble === false %>
+    <tr>
+      <td><%= User.find(item.user_id).name %></td>
+      <td><%= Book.find(item.book_id).name %></td>
+      <td><%= item.created_at.localtime %></td>
+      <td><%= item.status %></td>
+      <% if item.approved_date.blank? %>
+      <td>Blank</td>
+      <% else %>
+      <td><%= item.approved_date.localtime%></td>
+      <% end %>
+      <% issbook = IssueBook.where(book_id: item.book_id) %>
+      <% book = Book.find(item.book_id) %>
+      <% if book.availble === false %>
       <td><%= link_to "Return", reader_path(item.id),data:{turbo_method: :get}%></td>
-    <% else %>
+      <% else %>
       <td><a>Returned</a></td>
-    <% end %>
-  </tr>
+      <% end %>
+    </tr>
   </tbody>
-<% end %> 
+  <% end %> 
 </table>
 <%= paginate @requestedBooks%>

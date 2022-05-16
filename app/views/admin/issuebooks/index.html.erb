@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-<% @issued_books.each do |item|%>
+    <% @issued_books.each do |item|%>
     <tr>
       <th scope="row"><%= item.id%></th>
       <td><%= item.return_date.to_date%></td>
@@ -27,7 +27,7 @@
       <td><%= Book.find(item.book_id).name%></td>
       <td><%= User.find(item.user_id).name%></td>
     </tr>
-<% end %>
+    <% end %>
   </tbody>
 </table>
 <%= paginate @issued_books%>

@@ -7,22 +7,21 @@
     <h1>Hi Dear..! Your Requested Book has been <%= @book.status %></h1>
     <h2>Book Details</h2>
     <p>
-        <h3>Book ID : <%= @book.book_id %></h3><br>
-        <h3>User ID : <%= @book.user_id %></h3><br>
-        <%#debugger%>
-        <% if @book.approved_date.nil?%>
-        <h3>Book Has been rejected</h3>
-        <% else %>
-        <h3>Approved/Rejected At : <%= @book.approved_date.localtime %></h3>
-        <% end %>
+      <h3>Book ID : <%= @book.book_id %></h3><br>
+      <h3>User ID : <%= @book.user_id %></h3><br>
+      <% if @book.approved_date.nil?%>
+      <h3>Book Has been rejected</h3>
+      <% else %>
+      <h3>Approved/Rejected At : <%= @book.approved_date.localtime %></h3>
+      <% end %>
     </p>
     <h2>Book Return Date</h2>
     <p>
-        <% if @book.approved_date.nil?%>
-        <h3>Book Has been rejected thus no return appointed to you</h3>
-        <% else %>
-        <h3>Book must be returned at <%= @book.approved_date.localtime + 50.days %></h3>
-        <% end %>
+      <% if @book.approved_date.nil?%>
+      <h3>Book Has been rejected thus no return appointed to you</h3>
+      <% else %>
+      <h3>Book must be returned at <%= @book.approved_date.localtime + 50.days %></h3>
+      <% end %>
     </p>
     <p>Thanks for lending book from LMS and have a great day!</p>
   </body>

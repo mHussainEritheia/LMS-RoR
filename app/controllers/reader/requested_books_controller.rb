@@ -2,14 +2,11 @@ class Reader::RequestedBooksController < ApplicationController
   def index
     @requestedBooks = RequestedBook.where(user_id: current_user.id).page params[:page]
   end
-
   def book_rating
     if Rating.create(user_id: current_user.id, book_id: session[:book_id], rating: params[:rating])
-    # debugger
     redirect_to reader_books_path
     end
   end
-  
   def return_book
     penalty = 0
     days_def = 0
@@ -22,14 +19,10 @@ class Reader::RequestedBooksController < ApplicationController
     if @issueInstance.actual_return_date.to_date > @issueInstance.return_date.to_date
       days_def = (@issueInstance.actual_return_date.to_date - @issueInstance.return_date.to_date).to_i
       penalty = days_def * 110
-      # debugger
       BookFine.create(paid: false,amount: penalty, user_id: @user_id, book_id: @book_id, issue_book_id: @issueInstance.id)
       session[:book_id] = @book_id
     end 
-    # debugger
-    # redirect_to reader_requested_books_path
   end
-
   def new
     @book = Book.find(params[:format])
     @category_id = @book.book_category_id
@@ -42,8 +35,8 @@ class Reader::RequestedBooksController < ApplicationController
       redirect_to reader_book_path(@book.id)
     end
   end
-private
+  private
   def request_param
-      params.require(:requested_book).permit(:user_id, :book_id, :created_at)
+    params.require(:requested_book).permit(:user_id, :book_id, :created_at)
   end
 end

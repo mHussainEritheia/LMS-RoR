@@ -27,7 +27,6 @@
       <td>No</td>
       <% end %> 
       <td><%= image_tag item.image, style: "height: 50px; width: 50px;" %></td>
-      <%# debugger %>
       <% if item.availble === true %>
       <td><%= link_to "Request", new_reader_requested_book_path(item.id)%></td>
       <% else %>
@@ -37,4 +36,4 @@
 <% end %>
   </tbody>
 </table>
-<%= paginate @books %> 
+<%= paginate @books %>
