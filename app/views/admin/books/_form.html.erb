@@ -1,55 +1,40 @@
-<table class="table table-striped">
-        <%= form_with model: [:admin, @book],data:{turbo: false} do |form| %>
-            <tr>
-                <td>
-                <div class="mb-3">
-                  <%= form.label :name, "Enter Book Name", class: "form-label" %>
-                  <%= form.text_field :name, class: "form-control", placeholder: "xyz@xyz.com" %>
-                  <% @book.errors.full_messages_for(:name).each do |message| %>
-                  <div><%= message %></div>
-                  <% end %>
-                </div>
-                </td>
-            </tr> 
-            <tr>
-                <td>
-                  <%= form.label :author, "Enter Book Author Name", class: "form-label" %>
-                  <%= form.text_field :author, class: "form-control", placeholder: "John Jeffens" %>
-                  <% @book.errors.full_messages_for(:author).each do |message| %>
-                  <div><%= message %></div>
-                  <% end %>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                  <%= form.label :publication_year, "Select Book Publication Year", class: "form-label" %>
-                  <%= form.date_field :publication_year, class: "form-control" %>
-                  <% @book.errors.full_messages_for(:publication_year).each do |message| %>
-                  <div><%= message %></div>
-                  <% end %>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                  <%= form.label :book_category_id, "Select Book Category", class: "form-label" %>
-                  <%= form.select :book_category_id, BookCategory.pluck(:name, :id), class: "form-control"  %>
-                  <% @book.errors.full_messages_for(:book_category_id).each do |message| %>
-                  <div><%= message %></div>
-                  <% end %>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                  <%= form.label :image, class: "form-label"%>
-                  <%= form.file_field :image, class: "form-control"%>
-                  <% @book.errors.full_messages_for(:image).each do |message| %>
-                  <div><%= message %></div>
-                  <% end %>
-                </td>
-            </tr>
-            <tr>
-              <td><%= form.submit %></td>
-            </tr>
-        <% end %>
-    </table>
- 
+<div class="table table-striped">
+<%= form_with model: [:admin, @book],data:{turbo: false} do |form| %>
+  <div class="mb-2">
+    <%= form.label :name, "Enter Book Name", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "xyz@xyz.com" %>
+    <% @book.errors.full_messages_for(:name).each do |message| %>
+    <div><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-2">  
+  <%= form.label :author, "Enter Book Author Name", class: "form-label" %>
+  <%= form.text_field :author, class: "form-control", placeholder: "John Jeffens" %>
+  <% @book.errors.full_messages_for(:author).each do |message| %>
+  <div><%= message %></div>
+  <% end %>
+  </div>
+  <div class="mb-2">
+  <%= form.label :publication_year, "Select Book Publication Year", class: "form-label" %>
+  <%= form.date_field :publication_year, class: "form-control" %>
+  <% @book.errors.full_messages_for(:publication_year).each do |message| %>
+  <div><%= message %></div>
+  <% end %>
+  </div>
+  <div class="mb-2">
+  <%= form.label :book_category_id, "Select Book Category", class: "form-label" %>
+  <%= form.select :book_category_id, BookCategory.pluck(:name, :id), class: "form-control"  %>
+  <% @book.errors.full_messages_for(:book_category_id).each do |message| %>
+  <div><%= message %></div>
+  <% end %>
+  </div>
+  <div class="mb-2">
+  <%= form.label :image, class: "form-label"%>
+  <%= form.file_field :image, class: "form-control"%>
+  <% @book.errors.full_messages_for(:image).each do |message| %>
+  <div><%= message %></div>
+  <% end %>
+  </div>
+  <%= form.submit %>
+<% end %>
+</div>

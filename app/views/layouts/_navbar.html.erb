@@ -25,7 +25,7 @@
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
             <li class="dropli"><%= button_to 'Edit Profile', edit_user_registration_path, class: "nav-link btn btn-sm btn-light", method: :get %></li>
                 <hr class="dropdown-divider">
-            <li class="dropli"><%= button_to "Sign Out", destroy_user_session_path, class: "nav-link btn btn-sm btn-warning", method: :delete %></li>
+            <li class="dropli"><%= link_to "Sign Out", destroy_user_session_path, class: "nav-link btn btn-sm btn-warning", data: { turbo_method: :delete } %></li>
         </ul>
     </div>
   </div>
