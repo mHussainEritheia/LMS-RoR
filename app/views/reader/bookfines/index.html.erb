@@ -21,8 +21,8 @@
       <td>Not Paid</td>
       <% end %> 
       <%if item.paid? === false%>
-      <%= button_to "Pay Now!", checkout_create_path, params: {id: item.id}, remote: true%>
       <% end %>
+      <%= button_to "Pay Now!", checkout_create_path, params: {id: item.id}, remote: true%>
       </td>
     </tr>
 <% end %>
