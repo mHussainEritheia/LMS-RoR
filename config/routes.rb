@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # get "/", to: "/users/sign_in"
 
-  root "admin/book_categories#index"
+  # root "admin/book_categories#index"
   namespace :admin do
     resources :book_categories 
     resources :books 
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post "checkout/create", to: "checkout#create"
 
   namespace :reader do
+    # root "admin/book_categories#index"
     get 'top_rated_books/index'
     # resources :book_categories, only: [:show, :index] 
     # get 'book_categories', to: '/books'
