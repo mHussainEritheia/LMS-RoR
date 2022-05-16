@@ -18,16 +18,20 @@
       <th scope="row"><%= item.id%></th>
       <td><%= item.name%></td>
       <td><%= item.author%></td>
-      <td><%= item.publication_year%></td>
+      <td><%= item.publication_year.localtime%></td>
       <td><%= BookCategory.find(item.book_category_id).name%></td>
       <td><%= item.book_category_id%></td>
-      <td><%= item.availble%></td>
+      <% if item.availble === true%>
+      <td>Yes</td>
+      <% else %>
+      <td>No</td>
+      <% end %> 
       <td><%= image_tag item.image, style: "height: 50px; width: 50px;" %></td>
       <%# debugger %>
       <% if item.availble === true %>
-      <td><%= link_to "Request Book", new_reader_requested_book_path(item.id)%></td>
+      <td><%= link_to "Request", new_reader_requested_book_path(item.id)%></td>
       <% else %>
-      <td><a>Request Book</a></td>
+      <td><a>Book Occupied</a></td>
       <% end %>
     </tr>
 <% end %>
