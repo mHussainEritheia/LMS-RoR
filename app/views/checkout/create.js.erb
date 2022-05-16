@@ -1,4 +1,5 @@
-var stripe = Stripe("<%= Rails.application.credentials[:stripe_public]%>");
+<% stripe_secret = ENV["stripe_secret"] %>
+var stripe = Stripe("#{stripe_secret}");
 
 stripe.redirectToCheckout({
     sessionId: '<%= @session.id%>'
