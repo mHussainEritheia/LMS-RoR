@@ -14,8 +14,8 @@ class CheckoutController < ApplicationController
                 quantity: 1
             }],
             mode: 'payment',
-            success_url: reader_bookfines,
-            cancel_url: reader_bookfines,
+            success_url: reader_bookfines_url,
+            cancel_url: reader_bookfines_url,
         })
         BookFine.update(paid: true)
         respond_to do |format|
