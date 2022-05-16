@@ -19,7 +19,11 @@
       <% else %>
       <td><%= item.actual_return_date.localtime%></td>
       <% end %>
-      <td><%= item.returned%></td>
+      <% if item.returned === true%>
+      <td>Yes</td>
+      <% else %>
+      <td>No</td>
+      <% end %>
       <td><%= Book.find(item.book_id).name%></td>
       <td><%= User.find(item.user_id).name%></td>
     </tr>

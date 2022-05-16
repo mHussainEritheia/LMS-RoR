@@ -5,7 +5,7 @@
       <th scope="col">Due Amount</th>
       <th scope="col">Username</th>
       <th scope="col">Book Name</th>
-      <th scope="col">Paid</th>
+      <th scope="col">Payment</th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +15,11 @@
       <td><%= item.amount%></td>
       <td><%= User.find(item.user_id).name%></td>
       <td><%= Book.find(item.book_id).name%></td>
-      <td>Paid: <%= item.paid %></td>
+      <% if item.paid === true%>
+      <td>Paid</td>
+      <% else %>
+      <td>Not Paid</td>
+      <% end %>
     </tr>
 <% end %>
   </tbody>

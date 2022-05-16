@@ -48,7 +48,11 @@
       <td><%= item.publication_year.localtime %></td>
       <td><%= BookCategory.find(item.book_category_id).name%></td>
       <td><%= item.book_category_id%></td>
-      <td><%= item.availble%></td>
+      <% if item.availble === true%>
+      <td>Yes</td>
+      <% else %>
+      <td>No</td>
+      <% end %>
       <td><%= image_tag item.image, style: "height: 50px; width: 50px;" %></td>
       <td><%= link_to "Edit", edit_admin_book_path(item), class: "btn btn-sm btn-info"  %></td>
       <td><%= button_to "Delete", admin_book_path(item), method: :delete ,class: "btn btn-sm btn-danger" %></td>

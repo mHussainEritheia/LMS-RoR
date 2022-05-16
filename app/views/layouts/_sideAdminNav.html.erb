@@ -52,14 +52,14 @@
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="height:150%;"> <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"> <svg class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Library</span> </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
-            <li> <a href="/" class="nav-link text-white"><span class="ms-2">Categories</span> <i class="fa fa-dashboard"></i></a> </li>
+            <li> <a href="/admin/book_categories" class="nav-link text-white"><span class="ms-2">Categories</span> <i class="fa fa-dashboard"></i></a> </li>
             <li>
               <button class="dropdown-btn">
               <span class="ms-2">Books</span>
               <i class="fa fa-dashboard"></i>
               </button>
               <div class="dropdown-container">
-                <%= link_to "Books", admin_books_path%>
+                <%= link_to "All", admin_books_path%>
                 <%= link_to "Obtainable", admin_books_path(availble: true)%>
                 <%= link_to "Unobtainable", admin_books_path(availble: false)%>
               </div>
