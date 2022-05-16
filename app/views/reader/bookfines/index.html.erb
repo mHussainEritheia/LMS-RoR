@@ -19,8 +19,8 @@
       <td>Paid: <%= item.paid%> 
       <%#debugger%>
       <%if item.paid? === false%>
-      <%= link_to "Pay-Now", reader_bookfines_pay_dues_path(amount: item.amount, user_id: item.user_id, book_id: item.book_id, issue_book_id: item.issue_book_id) %>
-      | <%= button_to "Pay Now!", checkout_create_path, params: {id: item.id}, remote: true%>
+      <%#= link_to "Pay-Now", reader_bookfines_pay_dues_path(amount: item.amount, user_id: item.user_id, book_id: item.book_id, issue_book_id: item.issue_book_id) %>
+      <%= button_to "Pay Now!", checkout_create_path, params: {id: item.id}, remote: true%>
       <% end %>
       </td>
     </tr>

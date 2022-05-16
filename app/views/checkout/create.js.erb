@@ -1,5 +1,5 @@
-<% stripe_public = ENV["stripe_public"] %>
-var stripe = Stripe("#{stripe_public}");
+<%# stripe_public = ENV["stripe_public"] %>
+var stripe = Stripe("<%= ENV["stripe_public"] %>");
 
 stripe.redirectToCheckout({
     sessionId: '<%= @session.id%>'
