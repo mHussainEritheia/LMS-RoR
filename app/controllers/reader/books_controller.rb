@@ -3,7 +3,4 @@ class Reader::BooksController < ApplicationController
         @books = Book.all.page params[:page]
         authorize [:reader, @books]
     end
-    def show
-        @book = Book.find(params[:id])
-    end
 end

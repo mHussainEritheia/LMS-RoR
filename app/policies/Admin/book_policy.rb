@@ -5,25 +5,22 @@ class Admin::BookPolicy < ApplicationPolicy
     @record = record
   end
   def index?
-    user.role_id === 1
-  end
-  def show?
-    user.role_id === 1
+    adminCheck?
   end
   def create?
-    user.role_id === 1
+    adminCheck?
   end
   def new?
-    user.role_id === 1
+    adminCheck?
   end
   def update?
-    user.role_id === 1
+    adminCheck?
   end
   def edit?
-    @user.role_id === 1
+    adminCheck?
   end
   def destroy?
-    user.role_id === 1
+    adminCheck?
   end
   class Scope
     def initialize(user, scope)
@@ -35,5 +32,9 @@ class Admin::BookPolicy < ApplicationPolicy
     end
     private
     attr_reader :user, :scope
+  end
+  private
+  def adminCheck?
+    user.role.name === ADMIN
   end
 end

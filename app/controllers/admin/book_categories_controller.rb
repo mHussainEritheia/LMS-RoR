@@ -1,12 +1,9 @@
 class Admin::BookCategoriesController < ApplicationController
+   before_action :set_category_id, only: [:update, :destroy, :edit]
    def index
      @q = BookCategory.ransack(params[:q])
      @categories = @q.result.page params[:page]
      authorize ([:admin, @categories])
-   end
-   def show
-     @category = BookCategory.find(params[:id])
-     authorize ([:admin, @category])
    end
    def new
      @category = BookCategory.new
@@ -21,11 +18,9 @@ class Admin::BookCategoriesController < ApplicationController
       end
    end
    def edit
-      @category = BookCategory.find(params[:id])
       authorize ([:admin, @category])
     end
     def update
-      @category = BookCategory.find(params[:id])      
       if @category.update(category_param)
          authorize ([:admin, @category])
          redirect_to :action => 'index'
@@ -34,7 +29,6 @@ class Admin::BookCategoriesController < ApplicationController
       end
    end
    def destroy
-      @category = BookCategory.find(params[:id])
       authorize ([:admin, @category])
       if @category.destroy
          redirect_to :action => 'index'
@@ -42,7 +36,11 @@ class Admin::BookCategoriesController < ApplicationController
          render :action => 'index'
       end
    end
+   private
    def category_param
       params.require(:book_category).permit(:name)
+   end
+   def set_category_id
+      @category = BookCategory.category_find(params[:id])
    end
 end

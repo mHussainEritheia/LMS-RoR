@@ -5,10 +5,10 @@ class BookPolicy
     @record = record
   end
   def index?
-    @user.role_id === 5
+    readerCheck?
   end
   def show?
-    @user.role_id === 1
+    readerCheck?
   end
   def create?
     false
@@ -20,7 +20,7 @@ class BookPolicy
     false
   end
   def edit?
-    @user.role_id === 5
+    readerCheck?
   end
   def destroy?
     false
@@ -33,7 +33,11 @@ class BookPolicy
     def resolve
       raise NotImplementedError, "You must define #resolve in #{self.class}"
     end
-  private
+    private
     attr_reader :user, :scope
-    end
+  end
+  private
+  def readerCheck?
+    user.role.name === READER
+  end
 end  

@@ -1,6 +1,6 @@
 class Reader::RequestedBooksController < ApplicationController
   def index
-    @requestedBooks = RequestedBook.where(user_id: current_user.id).page params[:page]
+    @requestedBooks = RequestedBook.user_req_books(current_user.id).page params[:page]
   end
   def book_rating
     if Rating.create(user_id: current_user.id, book_id: session[:book_id], rating: params[:rating])
@@ -15,7 +15,7 @@ class Reader::RequestedBooksController < ApplicationController
     @user_id = @reqBook.user_id
     Book.find(@book_id).update(availble: true)
     @issueInstance = IssueBook.where(book_id: @book_id).first
-    @issueInstance.update(returned: true, actual_return_date: Time.now.to_date + 100.days)
+    @issueInstance.update(returned: true, actual_return_date: Time.now.to_date + 65.days)
     if @issueInstance.actual_return_date.to_date > @issueInstance.return_date.to_date
       days_def = (@issueInstance.actual_return_date.to_date - @issueInstance.return_date.to_date).to_i
       penalty = days_def * 110

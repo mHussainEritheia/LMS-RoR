@@ -1,7 +1,7 @@
 <div style="padding-right: 25%;">
 <div class="login_css">
 <h2 class="text-center text-capitalize text-primary font-weight-bold">Log in</h2>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
