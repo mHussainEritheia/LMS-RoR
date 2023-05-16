@@ -1,3 +1,4 @@
+This application is developed by Muhammad Bin Hussain during intership period at Eritheia Labs
 # README
 
 This README would normally document whatever steps are necessary to get the
